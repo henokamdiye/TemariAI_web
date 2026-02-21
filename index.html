@@ -27,10 +27,12 @@
             <h1>Reinventing Student Learning with <span class="text-gradient">AI & Competition</span></h1>
             <p>A futuristic educational ecosystem powered by Flutter and Supabase. Study, compete, and unlock global opportunities.</p>
             <div class="hero-btns">
-                <a href="temariai.apk" download="TemariAI_Android" class="btn-primary">
+                <a href="https://www.dropbox.com/scl/fi/dxnvb49rlnbc8rltoaf46/temariai.apk?rlkey=nz4lvfa2efo2m8okm8yak8ilx&st=u4zio2p0&dl=1" class="btn-primary" id="downloadBtn">
                     <i data-lucide="download" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 8px;"></i>Download for Android
                 </a>
-                <a href="#features" class="btn-secondary">Explore Features</a>
+                <button class="btn-secondary" onclick="shareSite()">
+                    <i data-lucide="share-2" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 8px;"></i>Share with Friends
+                </button>
             </div>
         </div>
         <div class="hero-glow"></div>
@@ -89,7 +91,7 @@
             <div class="tech-stack">
                 <div class="tech-item"><strong>Frontend:</strong> Flutter (Dart)</div>
                 <div class="tech-item"><strong>Backend:</strong> Supabase Cloud</div>
-                <div class="tech-item"><strong>Region:</strong> West Europe (Ireland)</div>
+                <div class="tech-item"><strong>Auth:</strong> Google Sign-In</div>
                 <div class="tech-item"><strong>Security:</strong> AES-256 Encryption</div>
             </div>
         </div>
@@ -132,21 +134,37 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-
-    <div id="downloadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10001; backdrop-filter:blur(10px); align-items:center; justify-content:center;">
-    <div class="glass-card" style="max-width:400px; text-align:center; padding:40px; border:1px solid var(--accent-blue);">
-        <h3 style="color:var(--accent-blue); margin-bottom:15px;">Download Started!</h3>
-        <p style="font-size:0.9rem; margin-bottom:20px; opacity:0.8;">To install TemariAI, please enable <strong>"Install from Unknown Sources"</strong> in your Android settings if prompted.</p>
-        <button onclick="document.getElementById('downloadModal').style.display='none'" class="btn-primary" style="padding:10px 20px; font-size:0.8rem;">Got it</button>
+    <div id="downloadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:10001; backdrop-filter:blur(10px); align-items:center; justify-content:center; padding: 20px;">
+        <div class="glass-card" style="max-width:450px; text-align:center; padding:30px; border:1px solid #00f2ff;">
+            <h3 style="color:#00f2ff; margin-bottom:15px;">Download Started!</h3>
+            <p style="font-size:0.95rem; margin-bottom:15px; color:#fff;">1. Open the APK file once finished.<br>2. Enable "Unknown Sources" in settings.<br>3. <strong>Use Google to Register</strong> (Sign-in) for now while we build other methods.</p>
+            <p style="font-size:0.85rem; margin-bottom:20px; color:#aaa;">Help our community grow by sharing this website link with your classmates!</p>
+            <button onclick="document.getElementById('downloadModal').style.display='none'" class="btn-primary" style="padding:12px 30px;">I Understand</button>
+        </div>
     </div>
-</div>
 
-<script>
-    // Show modal when download button is clicked
-    document.querySelector('a[download]').addEventListener('click', function() {
-        document.getElementById('downloadModal').style.display = 'flex';
-    });
-</script>
+    <script>
+        lucide.createIcons();
+
+        // Show Instructions
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            setTimeout(() => {
+                document.getElementById('downloadModal').style.display = 'flex';
+            }, 1000);
+        });
+
+        // Share Feature
+        function shareSite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'TemariAI',
+                    text: 'Join the TemariAI community! Study, compete, and unlock scholarships.',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                alert("Copy this link to share: " + window.location.href);
+            }
+        }
+    </script>
 </body>
 </html>
