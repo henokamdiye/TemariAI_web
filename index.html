@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,32 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Added spacing and glowing effect for share button */
+        .hero-btns {
+            display: flex;
+            gap: 15px; /* spacing between buttons */
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            position: relative;
+            background: #222;
+            color: #00f2ff;
+            border: 1px solid #00f2ff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 0 12px #00f2ff, 0 0 24px #00f2ff;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
+
 <body>
 
     <nav class="navbar">
@@ -140,31 +166,4 @@
             <p style="font-size:0.95rem; margin-bottom:15px; color:#fff;">1. Open the APK file once finished.<br>2. Enable "Unknown Sources" in settings.<br>3. <strong>Use Google to Register</strong> (Sign-in) for now while we build other methods.</p>
             <p style="font-size:0.85rem; margin-bottom:20px; color:#aaa;">Help our community grow by sharing this website link with your classmates!</p>
             <button onclick="document.getElementById('downloadModal').style.display='none'" class="btn-primary" style="padding:12px 30px;">I Understand</button>
-        </div>
-    </div>
-
-    <script>
-        lucide.createIcons();
-
-        // Show Instructions
-        document.getElementById('downloadBtn').addEventListener('click', function() {
-            setTimeout(() => {
-                document.getElementById('downloadModal').style.display = 'flex';
-            }, 1000);
-        });
-
-        // Share Feature
-        function shareSite() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'TemariAI',
-                    text: 'Join the TemariAI community! Study, compete, and unlock scholarships.',
-                    url: window.location.href
-                }).catch(console.error);
-            } else {
-                alert("Copy this link to share: " + window.location.href);
-            }
-        }
-    </script>
-</body>
-</html>
+        </div
